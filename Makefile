@@ -30,7 +30,7 @@ as: asm
 	$(AS) -mcpu=430 -mmcu=msp430g2553 -o $(TARGET).o $(TARGET).s
 
 ld: as
-	$(LD) -m msp430 /usr/local/Cellar/msp430/lib/gcc/msp430/4.6.3/crt0ivtbl16.o -L /usr/local/Cellar/msp430/lib/gcc/msp430/4.6.3 -L /usr/local/Cellar/msp430/lib/gcc -L/usr/local/Cellar/msp430/lib $(TARGET).o -lgcc -lcrt0 -L /usr/local/Cellar/msp430/msp430/lib/ldscripts/msp430g2553/ -o $(TARGET).out
+	$(LD) -m msp430 $(TARGET).o /usr/local/Cellar/msp430/lib/gcc/msp430/4.6.3/crt0ivtbl16.o -L /usr/local/Cellar/msp430/lib/gcc/msp430/4.6.3 -lcrt0 -L /usr/local/Cellar/msp430/msp430/lib/ldscripts/msp430g2553/ -o $(TARGET).out --verbose
 
 custom:	ld
 	$(MSPDEBUG) $(MSPPROGRAMMER) "erase"
