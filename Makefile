@@ -21,5 +21,8 @@ install: build
 build:
 	$(CC) $(COPTS) -o $(TARGET).elf $(SRC)
 
+asm:
+	$(CC) $(COPTS) -S -o $(TARGET).s $(SRC)
+
 clean:
-	rm $(TARGET).elf $(TARGET)_debug.elf
+	rm $(TARGET).elf $(TARGET).s
